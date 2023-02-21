@@ -1,0 +1,76 @@
+<div id="main">
+    <ul>
+      <li id="state1">State 1
+        <ul id="cities1" style="display: none;">
+          <li id="city1">City 1
+            <ul id="towns1" style="display: none;">
+              <li>Town 1</li>
+              <li>Town 2</li>
+            </ul>
+          </li>
+          <li id="city2">City 2
+            <ul id="towns2" style="display: none;">
+              <li>Town 3</li>
+              <li>Town 4</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li id="state2">State 2
+        <ul id="cities2" style="display: none;">
+          <li id="city3">City 3
+            <ul id="towns3" style="display: none;">
+              <li>Town 5</li>
+              <li>Town 6</li>
+            </ul>
+          </li>
+          <li id="city4">City 4
+            <ul id="towns4" style="display: none;">
+              <li>Town 7</li>
+              <li>Town 8</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  
+  <script>
+    // Get all the state elements
+    const stateElements = document.querySelectorAll("#main > ul > li");
+  
+    // Loop through all the state elements
+    stateElements.forEach(stateElement => {
+      // Add click event listener to each state element
+      stateElement.addEventListener("click", event => {
+        // Get the cities element for this state
+        const citiesElement = stateElement.querySelector("ul");
+        
+        // Toggle the visibility of the cities element
+        citiesElement.style.display = citiesElement.style.display === "none" ? "block" : "none";
+        
+        // Stop the event from bubbling up to the parent elements
+        event.stopPropagation();
+      });
+      
+      // Get all the city elements for this state
+      const cityElements = stateElement.querySelectorAll("ul > li");
+      
+      // Loop through all the city elements
+      cityElements.forEach(cityElement => {
+        // Add click event listener to each city element
+        cityElement.addEventListener("click", event => {
+          // Get the towns element for this city
+          const townsElement = cityElement.querySelector("ul");
+          
+          // Toggle the visibility of the towns element
+          townsElement.style.display = townsElement.style.display === "none" ? "block" : "none";
+          
+          // Stop the event from bubbling up to the parent elements
+          event.stopPropagation();
+        });
+      });
+    });
+  </script>
+  
+  
